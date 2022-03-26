@@ -16,6 +16,10 @@ api_key = sys.argv[1]
 
 #overall latitude from 29.186784154260742 to 29.713857422799144
 #overall longitude from -102.93127864997342 to -104.43158817157901
+
+#90.3 miles bottom left to bottom right
+#36.46 miles top to bottom
+
 #0.527073269
 #-1.500309522
 
