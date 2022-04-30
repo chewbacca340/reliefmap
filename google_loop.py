@@ -4,7 +4,9 @@ Created on Sun Apr  3 20:28:03 2022
 
 @author: brayd
 """
-api_key = ""
+import os
+
+api_key = os.environ["gapi"]
 url_start = "https://maps.googleapis.com/maps/api/elevation/json?locations="
 url_end = "=" + api_key
 
