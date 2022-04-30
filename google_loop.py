@@ -24,7 +24,12 @@ url_pairs = url_start + ""
 def getUrlPairs(url_pairs):
     url = url_pairs[:-1] + url_end
     print(url)
-
+    #saves to dictionary
+    #r = requests.get(url_pairs[:-1] + url_end)
+    
+    #prints only the results as dictionary
+    #r.json()["results"]
+    
 while lat < final_lat:
     lat = lat + lat_inc
     
