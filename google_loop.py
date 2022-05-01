@@ -19,11 +19,12 @@ final_long = -104.43158817157901
 
 lat_inc = 0.000958315
 long_inc = -0.002727835
-
+i = 0
 url_pairs = url_start + ""
 def getUrlPairs(url_pairs):
     url = url_pairs[:-1] + url_end
-    print(url)
+    print(len(url))
+    print(i)
     #saves to dictionary
     #r = requests.get(url_pairs[:-1] + url_end)
     
@@ -33,9 +34,12 @@ def getUrlPairs(url_pairs):
 while lat < final_lat:
     lat = lat + lat_inc
     
+    
     while long > final_long:
         long = long + long_inc
-         
+        
+        i = i + 1
+        
         if len(url_pairs + str(lat) + "%2C" + str(long) + url_end) >= 300:#8192-100:
             getUrlPairs(url_pairs)
             url_pairs = url_start + ""
