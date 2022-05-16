@@ -5,6 +5,7 @@ Created on Sat May 14 14:28:46 2022
 @author: brayd
 """
 
+
 import bpy
 import csv
 from operator import itemgetter
@@ -26,7 +27,7 @@ print(vertices_import[0])
 #Read and sort the vertices coordinates (sort by x and y)
 #vertices = sorted( [(float(r[0]), float(r[1]), float(r[2])) for r in inFile], key = itemgetter(0,1) )
 
-vertices = sorted( [(float(r[0]), float(r[1]), float(r[2])) for r in vertices_import], key = itemgetter(0,1) )
+vertices = sorted( [(float(r[1])/1000, float(r[2])/1000, float(r[0])/1000) for r in vertices_import], key = itemgetter(1,2) )
 
 #********* Assuming we have a rectangular grid *************
 xSize = next( i for i in range( len(vertices) ) if vertices[i][0] != vertices[i+1][0] ) + 1 #Find the first change in X
@@ -49,8 +50,58 @@ for p in obj.data.polygons: #Set smooth shading (if needed)
 
 bpy.context.collection.objects.link( obj )
 
+#bpy.context.space_data.context = 'MODIFIER'
 
-#newCol = bpy.data.collections.new('relief_map')
-#bpy.context.scene.collections.children.link(newCol)
-#newCol.objects.link(obj)
+bpy.ops.object.modifier_add(type='SKIN')
 
+bpy.ops.mesh.primitive_plane_add(size=2, enter_editmode=False, align='WORLD', location=(0, 0, 0), scale=(1, 1, 1))
+bpy.context.space_data.context = 'OBJECT'
+bpy.context.object.rotation_euler[0] = 1.5708
+bpy.context.object.location[1] = -0.24
+bpy.context.object.location[2] = 0.12 
+bpy.context.object.location[0] = 30.577
+bpy.context.object.scale[0] = 30.837
+
+bpy.ops.mesh.primitive_plane_add(size=2, enter_editmode=False, align='WORLD', location=(0, 0, 0), scale=(1, 1, 1))
+bpy.context.space_data.context = 'OBJECT'
+bpy.context.object.rotation_euler[0] = 1.5708
+bpy.context.object.location[1] = 145.07
+bpy.context.object.location[2] = 0.12 
+bpy.context.object.location[0] = 30.577
+bpy.context.object.scale[0] = 30.837
+
+bpy.ops.mesh.primitive_plane_add(size=2, enter_editmode=False, align='WORLD', location=(0, 0, 0), scale=(1, 1, 1))
+bpy.context.space_data.context = 'OBJECT'
+bpy.context.object.rotation_euler[0] = 1.5708
+bpy.context.object.rotation_euler[1] = 1.5708
+bpy.context.object.rotation_euler[2] = 1.5708
+bpy.context.object.scale[1] = 72.68
+bpy.context.object.location[1] = 72.42
+bpy.context.object.location[2] = 0.12 
+bpy.context.object.location[0] = -0.29
+
+bpy.ops.mesh.primitive_plane_add(size=2, enter_editmode=False, align='WORLD', location=(0, 0, 0), scale=(1, 1, 1))
+bpy.context.space_data.context = 'OBJECT'
+bpy.context.object.rotation_euler[0] = 1.5708
+bpy.context.object.rotation_euler[1] = 1.5708
+bpy.context.object.rotation_euler[2] = 1.5708
+bpy.context.object.scale[1] = 72.68
+bpy.context.object.location[1] = 72.42
+bpy.context.object.location[2] = 0.12 
+bpy.context.object.location[0] = 61.41
+
+bpy.ops.mesh.primitive_plane_add(size=2, enter_editmode=False, align='WORLD', location=(0, 0, 0), scale=(1, 1, 1))
+bpy.context.space_data.context = 'OBJECT'
+bpy.context.object.scale[0] = 30.577
+bpy.context.object.scale[1] = 72.68
+bpy.context.object.location[0] = 30.577
+bpy.context.object.location[1] = 72.42
+bpy.context.object.location[2] = -0.8
+
+
+#bpy.ops.mesh.primitive_cube_add(size=61.155, enter_editmode=False, align='WORLD', location=(0, 0, 0), scale=(1, 1, 1))
+
+#bpy.context.object.location[0] = 30.577
+#bpy.context.object.location[1] = 72.42
+#bpy.context.object.scale[1] = 2.36
+#bpy.context.object.scale[2] = 0.015
